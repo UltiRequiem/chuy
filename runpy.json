@@ -1,0 +1,5 @@
+{
+  "format": "poetry run black .",
+  "lint": "poetry run pylint runpy tests",
+  "test": "poetry run pytest"
+}
