@@ -15,4 +15,4 @@ jobs:
           pip install poetry
           poetry install
       - name: Run Pytest
-        run: poetry run pytest
+        run: chuy test
