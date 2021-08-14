@@ -25,7 +25,7 @@ def exec_commands(command):
 def list_commands(config: dict):
     print("Proyect Commands:")
     for item in config:
-        print(item)
+        print(f"{item}: {config[item]}")
 
     exit()
 
