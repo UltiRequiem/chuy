@@ -1,4 +1,4 @@
-from runpy import __version__
+from chuy import __version__
 
 
 def test_version():
