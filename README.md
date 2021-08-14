@@ -29,7 +29,16 @@ After having defined the commands in the [chuy.json](./chuy.json) file,
 you can now execute them as follows:
 
 ```bash
-chuy format  # {"format": "poetry run black ."} on chuy.json
+chuy format
  $ poetry run black .
+ ....
+```
+
+This varies depending on the commands you
+have written in the [chuy file](#example-configuration-file).
+
+```bash
+chuy lint
+ $ poetry run pylint chuy tests
  ....
 ```

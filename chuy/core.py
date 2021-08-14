@@ -22,13 +22,21 @@ def exec_commands(command):
     os.system(command)
 
 
+def list_commands(config: dict):
+    print("Proyect Commands:")
+    for item in config:
+        print(item)
+
+    exit()
+
+
 def main():
     config = get_config("chuy.json")
 
     try:
         param = argv[1]
     except IndexError:
-        raise BaseException("You dont passed a command!")
+        list_commands(config)
 
     if is_valide_config(config):
         exec_commands(config[param])
