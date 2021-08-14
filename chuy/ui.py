@@ -2,9 +2,13 @@ from sys import platform
 
 from colorama import Fore, Style, init
 
-cyan, red, yellow, blue = Fore.CYAN, Fore.RED, Fore.YELLOW, Fore.BLUE
-
-reset_style = Style.NORMAL
+cyan, red, yellow, blue, magenta = (
+    Fore.CYAN,
+    Fore.RED,
+    Fore.YELLOW,
+    Fore.BLUE,
+    Fore.MAGENTA,
+)
 
 
 def setup_colorama() -> None:
@@ -23,7 +27,7 @@ def colorized_input(text: str, color: str = yellow) -> str:
 
 
 def colorized_print(
-    text: str, color: str = blue, brightness: str = reset_style, **kwargs
+    text: str, color: str = blue, brightness: str = Style.NORMAL, **kwargs
 ) -> None:
     """
     Print the text colorized

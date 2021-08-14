@@ -8,10 +8,6 @@ from .ui import setup_colorama
 setup_colorama()
 
 
-def is_valide_config(configuration: dict) -> bool:
-    return bool(configuration)
-
-
 def get_config(configuration_file: str) -> dict:
     try:
         with open(configuration_file, "r") as reader:
@@ -28,10 +24,9 @@ def main() -> None:
     try:
         param = sys.argv[1]
     except IndexError:
-        list_commands(config)
+        param = list_commands(config)
 
-    if is_valide_config(config):
-        exec_commands(config[param])
+    exec_commands(config[param])
 
 
 if __name__ == "__main__":
