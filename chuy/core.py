@@ -1,8 +1,8 @@
 import json
 import sys
 
-from .helpers import exec_commands, list_commands
-from .ui import setup_colorama
+from .helpers import exec_commands, list_commands, keyboard_interrupt
+from .ui import colorized_print, setup_colorama
 
 
 setup_colorama()
@@ -26,7 +26,10 @@ def main() -> None:
     except IndexError:
         param = list_commands(config)
 
-    exec_commands(config[param])
+    try:
+        exec_commands(config[param])
+    except KeyError:
+        colorized_print("  That command is not defined in your configuration!")
 
 
 if __name__ == "__main__":
