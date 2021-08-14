@@ -8,9 +8,19 @@
 ![Repo Size](https://img.shields.io/github/repo-size/ultirequiem/chuy?style=flat-square&label=Repo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
-[![GitMoji](https://img.shields.io/badge/Gitmoji-%F0%9F%8E%A8%20-FFDD67.svg)](https://gitmoji.dev)
 
-### Usage
+## Example configuration file
+
+```json
+{
+  "format": "poetry run black .",
+  "lint": "poetry run pylint chuy tests",
+  "test": "poetry run pytest",
+  "package": "poetry build && poetry publish"
+}
+```
+
+## Usage
 
 ```bash
 chuy format  # {"format": "poetry run black ."} on chuy.json
