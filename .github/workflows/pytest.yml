@@ -12,7 +12,7 @@ jobs:
       - name: Prepare
         run: |
           sudo apt-get update      
-          pip install poetry
+          pip install poetry chuy
           poetry install
       - name: Run Pytest
         run: chuy test
