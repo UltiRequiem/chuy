@@ -31,7 +31,7 @@ def main() -> None:
         except IndexError:
             break
 
-    if len(commands) == 1:
+    if len(commands) <= 1:
         commands.append(list_commands(config))
 
     del commands[0]
