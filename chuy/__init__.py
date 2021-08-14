@@ -2,7 +2,7 @@
 This file define chuy as a module.
 """
 
-from .core import exec_commands, get_config
+from .core import exec_commands, get_config, main
 
 __version__ = "0.1.1"
 __authors__ = ["Eliaz Bobadilla <eliaz.bobadilladev@gmail.com>"]
