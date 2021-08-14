@@ -25,6 +25,11 @@ which must be in the root of your project.
 
 ## Usage
 
+After having defined the commands in the [chuy.json](./chuy.json) file,
+you can now execute them as follows:
+
 ```bash
 chuy format  # {"format": "poetry run black ."} on chuy.json
+ $ poetry run black .
+ ....
 ```
