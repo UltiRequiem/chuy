@@ -3,5 +3,6 @@ disable=
     C0114,
     C0115,
     C0116,
+    W0212
 
 # vim: ft=dosini tw=80
