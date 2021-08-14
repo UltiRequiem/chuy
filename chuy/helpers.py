@@ -1,11 +1,13 @@
+from typing import Callable
+
 from os import system as execute
 from sys import exit as sys_exit
 
 from .ui import colorized_print, red, cyan, yellow
 
 
-def error_handler(func):
-    def manager():
+def error_handler(func: Callable) -> Callable:
+    def manager() -> None:
         try:
             func()
         except KeyboardInterrupt:
@@ -27,7 +29,7 @@ def error_handler(func):
     return manager
 
 
-def list_commands(config: dict):
+def list_commands(config: dict) -> None:
     colorized_print(" Proyect Commands:", cyan)
     for item in config:
         colorized_print(

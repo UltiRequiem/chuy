@@ -22,7 +22,7 @@ def get_config(configuration_file: str) -> dict:
         raise BaseException("File does not exist!") from file_not_found
 
 
-def main():
+def main() -> None:
     config = get_config("chuy.json")
 
     try:
