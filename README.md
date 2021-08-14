@@ -11,19 +11,19 @@
 
 Set alias to long commands.
 
-## Example configuration file
+## Configuration file
 
 ```json
 {
   "format": "poetry run black .",
   "lint": "poetry run pylint chuy tests",
-  "test": "poetry run pytest",
+  "tests": "poetry run pytest",
   "package": "poetry build && poetry publish"
 }
 ```
 
-This configuration must be in the [`chuy.json`](./chuy.json) file,
-which must be in the root of your project.
+This configuration must be in a [`chuy.json`](./chuy.json) file.
+Usually this file goes in the root of your project but it can really go anywhere.
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "format": "poetry run black .",
   "lint": "poetry run pylint chuy tests",
-  "test": "poetry run pytest",
+  "tests": "poetry run pytest",
   "package":"poetry build && poetry publish"
 }

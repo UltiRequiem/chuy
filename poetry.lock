@@ -82,7 +82,7 @@ importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -307,7 +307,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "7831e8f02fb491557be947fa31b73c4e6c902f955fc464c389127065f923b3fc"
+content-hash = "ea60946535bda5e85fe02787feca071b945a8f931221d1cba859069d5a37bcbc"
 
 [metadata.files]
 appdirs = [

@@ -1,18 +1,22 @@
 import json
 import os
-from sys import argv
+import sys
+
+# TODO: Print colorized output
+from colorama import Fore, Back, Style
 
 
 def get_config(configuration_file: str) -> dict:
     try:
         with open(configuration_file, "r") as reader:
             return json.load(reader)
-    except ValueError:
-        raise BaseException("Your configuration is invalid!")
-    except FileNotFoundError:
-        raise BaseException("File does not exist!")
+    except json.decoder.JSONDecodeError as invalid_config:
+        raise BaseException("Your configuration is invalid!") from invalid_config
+    except FileNotFoundError as file_not_found:
+        raise BaseException("File does not exist!") from file_not_found
 
 
+# TODO: Validate the schema
 def is_valide_config(configuration: dict) -> bool:
     return True
 
@@ -20,21 +24,31 @@ def is_valide_config(configuration: dict) -> bool:
 def exec_commands(command):
     print(f" $ {command} \n")
     os.system(command)
+    sys.exit()
 
 
 def list_commands(config: dict):
     print("Proyect Commands:")
     for item in config:
-        print(f"{item}: {config[item]}")
+        print(
+            f"""
+  - {item}
+      $ {config[item]}
+        """
+        )
 
-    exit()
+    command = input("Which command do you want to run? ").lower()
+    try:
+        exec_commands(config[command])
+    except KeyError as command_not_exist:
+        raise BaseException("That is not a valid command!") from command_not_exist
 
 
 def main():
     config = get_config("chuy.json")
 
     try:
-        param = argv[1]
+        param = sys.argv[1]
     except IndexError:
         list_commands(config)
 

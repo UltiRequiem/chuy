@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chuy"
-version = "0.1.4"
+version = "0.1.5"
 description = "Set alias to long commands."
 authors = ["Eliaz Bobadilla <eliaz.bobadilladev@gmail.com>"]
 readme = "README.md"
@@ -12,6 +12,7 @@ include = ["LICENSE"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+colorama = "^0.4.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
