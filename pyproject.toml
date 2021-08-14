@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chuy"
-version = "0.1.3"
+version = "0.1.4"
 description = "Set alias to long commands."
 authors = ["Eliaz Bobadilla <eliaz.bobadilladev@gmail.com>"]
 readme = "README.md"

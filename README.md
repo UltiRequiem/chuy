@@ -9,6 +9,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
 
+Set alias to long commands.
+
 ## Example configuration file
 
 ```json
@@ -42,3 +44,7 @@ chuy lint
  $ poetry run pylint chuy tests
  ....
 ```
+
+### License
+
+Chuy is licensed under the [MIT License](./LICENSE).
