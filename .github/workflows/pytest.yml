@@ -1,0 +1,18 @@
+name: PyTest
+
+on: [push, pull_request]
+
+jobs:
+  luacheck:      
+    name: PyTest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare
+        run: |
+          sudo apt-get update      
+          pip install poetry
+          poetry install
+      - name: Run Pytest
+        run: poetry run pytest
