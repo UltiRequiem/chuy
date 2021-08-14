@@ -20,6 +20,9 @@
 }
 ```
 
+This configuration must be in the [`chuy.json`](./chuy.json) file,
+which must be in the root of your project.
+
 ## Usage
 
 ```bash
