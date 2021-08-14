@@ -1,3 +1,3 @@
-from .core import main
+from . import main
 
 main()

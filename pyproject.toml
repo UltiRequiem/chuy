@@ -1,8 +1,14 @@
 [tool.poetry]
 name = "chuy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Set alias to long commands."
 authors = ["Eliaz Bobadilla <eliaz.bobadilladev@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/UltiRequiem/chuy"
+repository = "https://github.com/UltiRequiem/chuy"
+keywords = ["commands", "utilities", "cli"]
+include = ["LICENSE"]
+
 
 [tool.poetry.dependencies]
 python = "^3.5"
@@ -13,7 +19,7 @@ black = "^21.7b0"
 pylint = "^2.9.6"
 
 [tool.poetry.scripts]
-poetry = 'chuy:main'
+chuy = 'chuy:main'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
