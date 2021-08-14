@@ -38,4 +38,3 @@ def exec_commands(command: str) -> None:
     """
     colorized_print(f" $ {command} \n", magenta)
     execute(command)
-    sys_exit()
