@@ -11,7 +11,7 @@ def keyboard_interrupt(func: typing.Callable) -> typing.Callable:
 
     def wrapper(*args, **kwargs):
         try:
-            func(*args, **kwargs)
+            return func(*args, **kwargs)
         except KeyboardInterrupt:
             colorized_print("\n  Process interrupted!")
             sys.exit(0)
