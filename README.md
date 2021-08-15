@@ -17,7 +17,7 @@ and even folders that are not projects!
 
 ## Install
 
-You can install Chuy from PyPI like any other package:
+You can install [Chuy](https://pypi.org/project/chuy) from PyPI like any other package:
 
 ```bash
 pip install chuy
@@ -79,6 +79,12 @@ chuy lint format tests
  $ poetry run pytest
  ....
 ```
+
+### Tricks
+
+If you do not pass any command, you will get a menu with all the available commands.
+Then you will be asked which of them you want to execute,
+here you can pass more than one command if you want.
 
 ### License
 

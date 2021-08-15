@@ -24,6 +24,13 @@ def get_config(configuration_file: str) -> dict:
         sys.exit(0)
 
 
+def flatten(lst: list) -> list:
+    """
+    Flat a list.
+    """
+    return [item for sublist in lst for item in sublist]
+
+
 def get_commands(config: dict) -> list:
     """
     Get a list with all the commands to execute.
@@ -40,14 +47,14 @@ def get_commands(config: dict) -> list:
     if len(commands) == 1:
         list_commands(config)
         try:
-            command = colorized_input("Which command do you want to run? ")
+            command = colorized_input("Which command do you want to run? ").split(" ")
         except KeyboardInterrupt:
             colorized_print("\n  Process interrupted!")
             sys.exit(0)
 
         commands.append(command)
 
-    return commands[1::]
+    return flatten(commands[1::])
 
 
 @keyboard_interrupt
