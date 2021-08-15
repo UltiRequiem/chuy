@@ -86,7 +86,15 @@ If you do not pass any command, you will get a menu with all the available comma
 then you will be asked which of them you want to execute,
 here you can pass more than one command if you want.
 
-![Screenshot](https://i.imgur.com/IalgJAf.png)
+### Screenshots
+
+Normal usage:
+
+![Screenshot Normal Usage](https://i.imgur.com/sOu86gu.png)
+
+And if you don't pass any command:
+
+![Screenshot Menu](https://i.imgur.com/nFd4Bz9.png)
 
 ### License
 
