@@ -1,24 +1,12 @@
-from typing import Callable
-from os import system as execute
-from sys import exit as sys_exit
+import os
 
-from .ui import colorized_print, colorized_input, red, cyan, yellow, magenta
-
-
-def keyboard_interrupt(func: Callable) -> Callable:
-    def wrapper(*args, **kwargs):
-        try:
-            func(*args, **kwargs)
-        except KeyboardInterrupt:
-            colorized_print("\n  Process interrupted!", red)
-            sys_exit(0)
-
-    return wrapper
+from .decorators import keyboard_interrupt
+from .ui import colorized_input, colorized_print, cyan, magenta, red, yellow
 
 
 @keyboard_interrupt
 def list_commands(config: dict) -> str:
-    colorized_print(" Proyect Commands:", cyan)
+    colorized_print(" Project Commands:", cyan)
     for item in config:
         colorized_print(
             f"""
@@ -37,4 +25,4 @@ def exec_commands(command: str) -> None:
     Print command with colors and then execute it
     """
     colorized_print(f" $ {command} \n", magenta)
-    execute(command)
+    os.system(command)

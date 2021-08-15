@@ -1,8 +1,8 @@
 import json
 import sys
 
-from .helpers import exec_commands, list_commands, sys_exit
-from .ui import colorized_print, setup_colorama, red
+from .helpers import exec_commands, list_commands
+from .ui import colorized_print, red, setup_colorama
 
 
 setup_colorama()
@@ -14,10 +14,10 @@ def get_config(configuration_file: str) -> dict:
             return json.load(reader)
     except json.decoder.JSONDecodeError:
         colorized_print(" Your configuration is invalid!", red)
-        sys_exit()
+        sys.exit(0)
     except FileNotFoundError:
-        colorized_print(" File does not exist!", red)
-        sys_exit()
+        colorized_print(" I can't find your configuration file :(", red)
+        sys.exit(0)
 
 
 def main() -> None:
