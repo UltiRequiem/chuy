@@ -1,7 +1,7 @@
 import sys
 import typing
 
-from .ui import colorized_print, red
+from .ui import colorized_print
 
 
 def keyboard_interrupt(func: typing.Callable) -> typing.Callable:
@@ -13,7 +13,7 @@ def keyboard_interrupt(func: typing.Callable) -> typing.Callable:
         try:
             func(*args, **kwargs)
         except KeyboardInterrupt:
-            colorized_print("\n  Process interrupted!", red)
+            colorized_print("\n  Process interrupted!")
             sys.exit(0)
 
     return wrapper

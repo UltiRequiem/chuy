@@ -9,9 +9,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
 
-Set alias to long commands.
+Set alias to long commands and speed up your workflow.
+Chuy is inspired in tools like [yarn](https://yarnpkg.com) and [npm](https://github.com/npm/cli).
 
-## Configuration file
+Although Chuy is written in Python, it can be used for projects of any language,
+and even folders that are not projects!
+
+## Example Configuration file
 
 ```json
 {
@@ -42,6 +46,20 @@ have written in the [chuy file](#example-configuration-file).
 ```bash
 chuy lint
  $ poetry run pylint chuy tests
+ ....
+```
+
+You can also pass multiple commands:
+
+```bash
+chuy lint format tests
+ $ poetry run pylint chuy tests
+ ....
+
+ $ poetry run black .
+ ....
+
+ $ poetry run pytest
  ....
 ```
 

@@ -6,10 +6,13 @@ import json
 import sys
 
 from .decorators import keyboard_interrupt
-from .ui import colorized_print, cyan, magenta, red, yellow
+from .ui import colorized_print, colorized_input, cyan, magenta, red, yellow
 
 
 def get_config(configuration_file: str) -> dict:
+    """
+    Read the config and parse it to a Python dictionary.
+    """
     try:
         with open(configuration_file, "r") as reader:
             return json.load(reader)
@@ -19,6 +22,32 @@ def get_config(configuration_file: str) -> dict:
     except FileNotFoundError:
         colorized_print(" I can't find your configuration file :(", red)
         sys.exit(0)
+
+
+def get_commands(config: dict) -> list:
+    """
+    Get a list with all the commands to execute.
+    """
+
+    commands = []
+
+    for item in range(len(config)):
+        try:
+            commands.append(sys.argv[item])
+        except IndexError:
+            break
+
+    if len(commands) == 1:
+        list_commands(config)
+        try:
+            command = colorized_input("Which command do you want to run? ")
+        except KeyboardInterrupt:
+            colorized_print("\n  Process interrupted!")
+            sys.exit(0)
+
+        commands.append(command)
+
+    return commands[1::]
 
 
 @keyboard_interrupt
