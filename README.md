@@ -9,11 +9,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
 
-Set alias to long commands and speed up your workflow.
-Chuy is inspired in tools like [yarn](https://yarnpkg.com) and [npm](https://github.com/npm/cli).
+Set alias to long commands and speed up your workflow,
+inspired in tools like [yarn](https://yarnpkg.com) and [npm](https://github.com/npm/cli).
 
 Although Chuy is written in Python, it can be used for projects of any language,
 and even folders that are not projects!
+
+## Install
+
+You can install Chuy from PyPI like any other package:
+
+```bash
+pip install chuy
+```
+
+To get the last version:
+
+```bash
+pip install git+https:/github.com/UltiRequiem/chuy
+```
+
+If you use Linux, you may need to install this with sudo to
+be able to access the command throughout your system.
 
 ## Example Configuration file
 
