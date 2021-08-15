@@ -31,7 +31,7 @@ def get_commands(config: dict) -> list:
     """
 
     try:
-        return [sys.argv[item] for item in range(1, len(config))]
+        return [sys.argv[item] for item in range(1, len(config) - 1)]
     except IndexError:
         list_commands(config)
         return colorized_input("Which command do you want to run? ").split(" ")
