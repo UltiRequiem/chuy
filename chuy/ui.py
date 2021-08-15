@@ -1,35 +1,40 @@
-from sys import platform
+"""
+Here I define everything related to Colorama :)
+"""
 
-from colorama import Fore, Style, init
+import sys
 
+import colorama
+
+# For export, and easily usage :)
 cyan, red, yellow, blue, magenta = (
-    Fore.CYAN,
-    Fore.RED,
-    Fore.YELLOW,
-    Fore.BLUE,
-    Fore.MAGENTA,
+    colorama.Fore.CYAN,
+    colorama.Fore.RED,
+    colorama.Fore.YELLOW,
+    colorama.Fore.BLUE,
+    colorama.Fore.MAGENTA,
 )
 
 
 def setup_colorama() -> None:
     """
-    This is not necessary in Linux or Darwin
+    Execute init function of Colorama. This is not necessary in Linux or Darwin.
     """
-    if platform in ["win32", "cygwin"]:
-        init()
+    if "win" in sys.platform:
+        colorama.init()
 
 
 def colorized_input(text: str, color: str = yellow) -> str:
     """
-    Return the input, but the input is printed with colors
+    Same as normal input, but printed with colors.
     """
     return input(f" {color}{text} ")
 
 
 def colorized_print(
-    text: str, color: str = blue, brightness: str = Style.NORMAL, **kwargs
+    text: str, color: str = red, brightness: str = colorama.Style.NORMAL, **kwargs
 ) -> None:
     """
-    Print the text colorized
+    Print the text with colors.
     """
-    print(f"{brightness}{color}{text}{Style.RESET_ALL}", **kwargs)
+    print(f"{brightness}{color}{text}{colorama.Style.RESET_ALL}", **kwargs)

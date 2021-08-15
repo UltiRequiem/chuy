@@ -1,10 +1,14 @@
 import sys
-from typing import Callable
+import typing
 
 from .ui import colorized_print, red
 
 
-def keyboard_interrupt(func: Callable) -> Callable:
+def keyboard_interrupt(func: typing.Callable) -> typing.Callable:
+    """
+    This makes the traceback not printed.
+    """
+
     def wrapper(*args, **kwargs):
         try:
             func(*args, **kwargs)
