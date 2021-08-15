@@ -46,6 +46,7 @@ def get_commands(config: dict) -> list:
 
     if len(commands) == 1:
         list_commands(config)
+
         try:
             command = colorized_input("Which command do you want to run? ").split(" ")
         except KeyboardInterrupt:
@@ -53,8 +54,9 @@ def get_commands(config: dict) -> list:
             sys.exit(0)
 
         commands.append(command)
+        return flatten(commands[1::])
 
-    return flatten(commands[1::])
+    return commands[1::]
 
 
 @keyboard_interrupt

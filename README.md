@@ -82,8 +82,8 @@ chuy lint format tests
 
 ### Tricks
 
-If you do not pass any command, you will get a menu with all the available commands.
-Then you will be asked which of them you want to execute,
+If you do not pass any command, you will get a menu with all the available commands,
+then you will be asked which of them you want to execute,
 here you can pass more than one command if you want.
 
 ![Screenshot](https://i.imgur.com/IalgJAf.png)
