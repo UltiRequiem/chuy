@@ -86,6 +86,8 @@ If you do not pass any command, you will get a menu with all the available comma
 Then you will be asked which of them you want to execute,
 here you can pass more than one command if you want.
 
+![Screenshot](https://i.imgur.com/IalgJAf.png)
+
 ### License
 
 Chuy is licensed under the [MIT License](./LICENSE).
