@@ -6,7 +6,7 @@ import json
 import sys
 
 from .decorators import keyboard_interrupt
-from .ui import colorized_print, colorized_input, cyan, magenta, red, yellow
+from .ui import colorized_print, colorized_input, cyan, magenta, yellow
 
 
 def get_config(configuration_file: str) -> dict:
@@ -17,24 +17,11 @@ def get_config(configuration_file: str) -> dict:
         with open(configuration_file, "r") as reader:
             return json.load(reader)
     except json.decoder.JSONDecodeError:
-        colorized_print(" Your configuration is invalid!", red)
+        colorized_print(" Your configuration is invalid!")
         sys.exit(0)
     except FileNotFoundError:
-        colorized_print(" I can't find your configuration file :(", red)
+        colorized_print(" I can't find your configuration file :(")
         sys.exit(0)
-
-
-@keyboard_interrupt
-def get_commands(config: dict) -> list:
-    """
-    Get a list with all the commands to execute.
-    """
-
-    try:
-        return [sys.argv[item] for item in range(1, len(config) - 1)]
-    except IndexError:
-        list_commands(config)
-        return colorized_input("Which command do you want to run? ").split(" ")
 
 
 @keyboard_interrupt
@@ -49,9 +36,29 @@ def list_commands(config: dict) -> None:
             f"""
   - {item}
       {yellow}$ {magenta}{config[item]}
-        """,
-            red,
+        """
         )
+
+
+@keyboard_interrupt
+def get_commands(config: dict) -> list:
+    """
+    Get a list with all the commands to execute.
+    """
+
+    commands = []
+
+    for item in range(len(config)):
+        try:
+            commands.append(sys.argv[item])
+        except IndexError:
+            break
+
+    if len(commands) == 1:
+        list_commands(config)
+        return colorized_input("Which command do you want to run? ").split(" ")
+
+    return commands[1::]
 
 
 @keyboard_interrupt

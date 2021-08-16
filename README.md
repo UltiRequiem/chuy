@@ -15,6 +15,9 @@ inspired in tools like [yarn](https://yarnpkg.com) and [npm](https://github.com/
 Although Chuy is written in Python, it can be used for projects of any language,
 and even folders that are not projects!
 
+**Note:** this tool is actively used by its primary author.
+He's happy to review pull requests / respond to issues you may discover.
+
 ## Install
 
 You can install [Chuy](https://pypi.org/project/chuy) from PyPI like any other package:
