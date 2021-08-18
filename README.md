@@ -89,6 +89,8 @@ If you do not pass any command, you will get a menu with all the available comma
 then you will be asked which of them you want to execute,
 here you can pass more than one command if you want.
 
+If you want to integrate this tool with Poetry, try: [UltiRequiem/poetry-chuy-plugin](https://github.com/UltiRequiem/poetry-chuy-plugin)
+
 ### Screenshots
 
 Normal usage:
