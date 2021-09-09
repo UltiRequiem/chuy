@@ -48,7 +48,7 @@ Using `JSON` format:
 }
 ```
 
-> ([`chuy.json`](./chuy.json))
+> Example: [`chuy.json`](./chuy.json)
 
 Using `TOML` format:
 
@@ -60,7 +60,7 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
-> ([`chuy.toml`](./chuy.toml))
+> Example: [`chuy.toml`](./chuy.toml)
 
 Using `pyproject.toml` file:
 
@@ -72,7 +72,7 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
-> ([`pyproject.toml`](./pyproject.toml))
+> Example: [`pyproject.toml`](./pyproject.toml)
 
 Usually the configuration file goes in the root of your project but it can really go anywhere.
 
