@@ -37,7 +37,7 @@ be able to access the command throughout your system.
 
 ## Example Configuration file
 
-Using JSON:
+Using `JSON`f
 
 ```json
 {
@@ -50,10 +50,20 @@ Using JSON:
 
 This configuration must be in a [`chuy.json`](./chuy.json) file.
 
-Using TOML:
+Using `TOML`:
 
 ```toml
 [chuy]
+format = "poetry run black ."
+lint = "poetry run pylint chuy tests"
+tests = "poetry run pytest"
+package = "poetry build && poetry publish"
+```
+
+Using `pyproject.toml`:
+
+```toml
+[tool.chuy]
 format = "poetry run black ."
 lint = "poetry run pylint chuy tests"
 tests = "poetry run pytest"
