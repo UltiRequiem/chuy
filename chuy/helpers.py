@@ -10,49 +10,49 @@ import toml
 from .decorators import keyboard_interrupt
 from .ui import colorized_print, colorized_input, cyan, magenta, yellow
 
+# Time to a new post on codereview.stackexchange.com
 
 def get_config_file() -> str:
-    try:
-        with open("chuy.json", mode="r", encoding="utf-8"):
-            return "json"
-    except FileNotFoundError:
+    posible_config_files = ["chuy.json", "pyproject.toml", "chuy.toml"]
+
+    for file in posible_config_files:
         try:
-            with open("pyproject.toml", mode="r", encoding="utf-8"):
-                return "poetry"
+            with open(file, mode="r", encoding="utf-8"):
+                return file
         except FileNotFoundError:
-            try:
-                with open("chuy.toml", mode="r", encoding="utf-8"):
-                    return "toml"
-            except FileNotFoundError:
-                colorized_print(" I can't find your configuration file :(")
-                sys.exit(0)
+            continue
 
 
-def get_config(filetype: str) -> dict:
+# FIX: NEEDS A CLEAN UP
+
+def get_config(file: str) -> dict:
     """
     Read the config and parse it to a Python dictionary.
     """
-    if filetype == "json":
+    if file == "chuy.json":
         try:
-            with open(f"chuy.{filetype}", mode="r", encoding="utf-8") as reader:
+            with open(file, mode="r", encoding="utf-8") as reader:
                 return json.load(reader)
         except json.decoder.JSONDecodeError:
             colorized_print(" Your configuration is invalid!")
             sys.exit(0)
-    elif filetype == "poetry":
+    elif file == "pyproject.toml":
         try:
-            with open("pyproject.toml", mode="r", encoding="utf-8") as reader:
+            with open(file, mode="r", encoding="utf-8") as reader:
                 return toml.load(reader)["tool"]["chuy"]
         except toml.TomlDecodeError:
             colorized_print(" Your configuration is invalid!")
             sys.exit(0)
-    elif filetype == "toml":
+    elif file == "chuy.toml":
         try:
-            with open("chuy.toml", mode="r", encoding="utf-8") as reader:
+            with open(file, mode="r", encoding="utf-8") as reader:
                 return toml.load(reader)["chuy"]
         except toml.TomlDecodeError:
             colorized_print(" Your configuration is invalid!")
             sys.exit(0)
+    else:
+        colorized_print("File not Found")
+        sys.exit(0)
 
 
 @keyboard_interrupt

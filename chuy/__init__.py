@@ -18,7 +18,7 @@ from .ui import (
 )
 
 # Package Meta Data
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 __authors__ = ["Eliaz Bobadilla <eliaz.bobadilladev@gmail.com>"]
 __author_email__ = "eliaz.bobadilladev@gmail.com"
 __url__ = "https://github.com/UltiRequiem/chuy"
