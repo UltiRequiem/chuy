@@ -5,23 +5,47 @@ import os
 import json
 import sys
 
+import toml
+
 from .decorators import keyboard_interrupt
 from .ui import colorized_print, colorized_input, cyan, magenta, yellow
 
 
-def get_config(configuration_file: str) -> dict:
+def get_config_file() -> str:
+    try:
+        with open("chuy.json", mode="r", encoding="utf-8"):
+            return "json"
+    except FileNotFoundError:
+        try:
+            with open("pyproject.toml", mode="r", encoding="utf-8"):
+                return "toml"
+        except FileNotFoundError:
+            colorized_print(" I can't find your configuration file :(")
+            sys.exit(0)
+
+
+def get_config(configuration_file_ext: str) -> dict:
     """
     Read the config and parse it to a Python dictionary.
     """
-    try:
-        with open(configuration_file, "r") as reader:
-            return json.load(reader)
-    except json.decoder.JSONDecodeError:
-        colorized_print(" Your configuration is invalid!")
-        sys.exit(0)
-    except FileNotFoundError:
-        colorized_print(" I can't find your configuration file :(")
-        sys.exit(0)
+    if configuration_file_ext == "json":
+        try:
+            with open(
+                f"chuy.{configuration_file_ext}", mode="r", encoding="utf-8"
+            ) as reader:
+                return json.load(reader)
+        except json.decoder.JSONDecodeError:
+            colorized_print(" Your configuration is invalid!")
+            sys.exit(0)
+    elif configuration_file_ext == "toml":
+        try:
+            with open(
+                f"pyproject.{configuration_file_ext}", mode="r", encoding="utf-8"
+            ) as reader:
+                return toml.load(reader)["tool"]["chuy"]
+        except toml.TomlDecodeError:
+            colorized_print(" Your configuration is invalid!")
+            sys.exit(0)
 
 
 @keyboard_interrupt

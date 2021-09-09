@@ -23,6 +23,12 @@ pylint = "^2.9.6"
 [tool.poetry.scripts]
 chuy = 'chuy:main'
 
+[tool.chuy]
+format = "poetry run black ."
+lint = "poetry run pylint chuy tests"
+tests = "poetry run pytest"
+package = "poetry build && poetry publish"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
