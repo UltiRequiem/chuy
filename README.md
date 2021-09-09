@@ -48,7 +48,7 @@ Using `JSON` format:
 }
 ```
 
-This configuration must be in a [`chuy.json`](./chuy.json) file.
+> ([`chuy.json`](./chuy.json))
 
 Using `TOML` format:
 
@@ -60,6 +60,8 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
+> ([`chuy.toml`](./chuy.toml))
+
 Using `pyproject.toml` file:
 
 ```toml
@@ -69,6 +71,8 @@ lint = "poetry run pylint chuy tests"
 tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
+
+> ([`pyproject.toml`](./pyproject.toml))
 
 Usually the configuration file goes in the root of your project but it can really go anywhere.
 
