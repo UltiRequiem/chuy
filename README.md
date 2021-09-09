@@ -37,7 +37,7 @@ be able to access the command throughout your system.
 
 ## Example Configuration file
 
-Using `JSON`f
+Using `JSON` format:
 
 ```json
 {
@@ -50,7 +50,7 @@ Using `JSON`f
 
 This configuration must be in a [`chuy.json`](./chuy.json) file.
 
-Using `TOML`:
+Using `TOML` format:
 
 ```toml
 [chuy]
@@ -60,7 +60,7 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
-Using `pyproject.toml`:
+Using `pyproject.toml` file:
 
 ```toml
 [tool.chuy]
@@ -70,11 +70,11 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
-Usually this file goes in the root of your project but it can really go anywhere.
+Usually the configuration file goes in the root of your project but it can really go anywhere.
 
 ## Usage
 
-After having defined the commands in the [chuy.json](./chuy.json) file,
+After having defined the commands in the [chuy.json](#example-configuration-file) file,
 you can now execute them as follows:
 
 ```bash
