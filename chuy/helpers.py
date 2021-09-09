@@ -18,31 +18,38 @@ def get_config_file() -> str:
     except FileNotFoundError:
         try:
             with open("pyproject.toml", mode="r", encoding="utf-8"):
-                return "toml"
+                return "poetry"
         except FileNotFoundError:
-            colorized_print(" I can't find your configuration file :(")
-            sys.exit(0)
+            try:
+                with open("chuy.toml", mode="r", encoding="utf-8"):
+                    return "toml"
+            except FileNotFoundError:
+                colorized_print(" I can't find your configuration file :(")
+                sys.exit(0)
 
 
-def get_config(configuration_file_ext: str) -> dict:
+def get_config(filetype: str) -> dict:
     """
     Read the config and parse it to a Python dictionary.
     """
-    if configuration_file_ext == "json":
+    if filetype == "json":
         try:
-            with open(
-                f"chuy.{configuration_file_ext}", mode="r", encoding="utf-8"
-            ) as reader:
+            with open(f"chuy.{filetype}", mode="r", encoding="utf-8") as reader:
                 return json.load(reader)
         except json.decoder.JSONDecodeError:
             colorized_print(" Your configuration is invalid!")
             sys.exit(0)
-    elif configuration_file_ext == "toml":
+    elif filetype == "poetry":
         try:
-            with open(
-                f"pyproject.{configuration_file_ext}", mode="r", encoding="utf-8"
-            ) as reader:
+            with open("pyproject.toml", mode="r", encoding="utf-8") as reader:
                 return toml.load(reader)["tool"]["chuy"]
+        except toml.TomlDecodeError:
+            colorized_print(" Your configuration is invalid!")
+            sys.exit(0)
+    elif filetype == "toml":
+        try:
+            with open("chuy.toml", mode="r", encoding="utf-8") as reader:
+                return toml.load(reader)["chuy"]
         except toml.TomlDecodeError:
             colorized_print(" Your configuration is invalid!")
             sys.exit(0)
