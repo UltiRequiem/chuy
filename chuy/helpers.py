@@ -8,9 +8,10 @@ import sys
 import toml
 
 from .decorators import keyboard_interrupt
-from .ui import colorized_print, colorized_input, cyan, magenta, yellow
+from .ui import colorized_print, colorized_input, cyan, magenta, yellow,error
 
-# Time to a new post on codereview.stackexchange.com
+# codereview.stackexchange.com/questions/267841
+
 
 def get_config_file() -> str:
     posible_config_files = ["chuy.json", "pyproject.toml", "chuy.toml"]
@@ -22,8 +23,11 @@ def get_config_file() -> str:
         except FileNotFoundError:
             continue
 
+    error("File not Found")
+
 
 # FIX: NEEDS A CLEAN UP
+
 
 def get_config(file: str) -> dict:
     """
@@ -34,25 +38,19 @@ def get_config(file: str) -> dict:
             with open(file, mode="r", encoding="utf-8") as reader:
                 return json.load(reader)
         except json.decoder.JSONDecodeError:
-            colorized_print(" Your configuration is invalid!")
-            sys.exit(0)
+            error(" Your configuration is invalid!")
     elif file == "pyproject.toml":
         try:
             with open(file, mode="r", encoding="utf-8") as reader:
                 return toml.load(reader)["tool"]["chuy"]
         except toml.TomlDecodeError:
-            colorized_print(" Your configuration is invalid!")
-            sys.exit(0)
+            error(" Your configuration is invalid!")
     elif file == "chuy.toml":
         try:
             with open(file, mode="r", encoding="utf-8") as reader:
                 return toml.load(reader)["chuy"]
         except toml.TomlDecodeError:
-            colorized_print(" Your configuration is invalid!")
-            sys.exit(0)
-    else:
-        colorized_print("File not Found")
-        sys.exit(0)
+            error(" Your configuration is invalid!")
 
 
 @keyboard_interrupt

@@ -38,3 +38,13 @@ def colorized_print(
     Print the text with colors.
     """
     print(f"{brightness}{color}{text}{colorama.Style.RESET_ALL}", **kwargs)
+
+
+def error(
+    text: str, color: str = red, brightness: str = colorama.Style.NORMAL, **kwargs
+) -> None:
+    """
+    Print the text with colors.
+    """
+    print(f"{brightness}{color}{text}{colorama.Style.RESET_ALL}", **kwargs)
+    sys.exit(0)
