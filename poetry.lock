@@ -83,6 +83,17 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "colores"
+version = "0.1.1"
+description = "A Wrapper for Colorama"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+colorama = ">=0.4.4,<0.5.0"
+
+[[package]]
 name = "importlib-metadata"
 version = "4.8.1"
 description = "Read metadata from Python packages"
@@ -316,7 +327,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "410ff509390bbc0ac9f58b614fb9f7ee43aae39023e4b74c56eefd38a400fe4d"
+content-hash = "cd98c5119c73d3942bd679ac3b0832ee66de78ca9c759a220af0dfe30e26a325"
 
 [metadata.files]
 astroid = [
@@ -342,6 +353,10 @@ click = [
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
+]
+colores = [
+    {file = "colores-0.1.1-py3-none-any.whl", hash = "sha256:5acc7fd0002f2e7ad1ee2a04c43a2939557745d8cb84947cc5708da67a5cc415"},
+    {file = "colores-0.1.1.tar.gz", hash = "sha256:f75ec05adc201b2c0d9385ff88e89a4ff21872585d5a799e09663895fbfa3ed6"},
 ]
 importlib-metadata = [
     {file = "importlib_metadata-4.8.1-py3-none-any.whl", hash = "sha256:b618b6d2d5ffa2f16add5697cf57a46c76a56229b0ed1c438322e4e95645bd15"},
