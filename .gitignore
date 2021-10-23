@@ -6,4 +6,5 @@
 **/venv/
 
 # IDEs
-.vscode
+.vscode/
+.vim/

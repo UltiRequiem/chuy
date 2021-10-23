@@ -8,7 +8,7 @@
 ![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
 
 Set alias to long commands and speed up your workflow, inspired in tools like
-[yarn](https://yarnpkg.com) and [npm](https://github.com/npm/cli).
+[yarn](https://github.com/yarnpkg/berry) and [npm](https://github.com/npm/cli).
 
 Although Chuy is written in Python, it can be used for projects of any language,
 and even folders that are not projects!
@@ -123,4 +123,4 @@ And if you don't pass any command:
 
 ## License
 
-Chuy is licensed under the [MIT License](./LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
