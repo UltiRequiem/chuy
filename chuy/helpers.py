@@ -6,9 +6,9 @@ import os
 import json
 import sys
 import pathlib
+from textwrap import dedent
 
 import toml
-
 from colores import colorized_print, colorized_input, CYAN, MAGENTA, YELLOW
 
 
@@ -25,20 +25,22 @@ def get_config(file: str) -> dict:
     """
     Read the config and parse it to a Python dictionary.
     """
+    config_object = {}
 
     with open(file=file, mode="r", encoding="utf-8") as configuration:
         try:
-            return {
-                "chuy.json": json.load(configuration) if file == "chuy.json" else {},
-                "chuy.toml": toml.load(configuration)["chuy"]
-                if file == "chuy.toml"
-                else {},
-                "pyproject.toml": toml.load(configuration)["tool"]["chuy"]
-                if file == "pyproject.toml"
-                else {},
-            }[file]
+            if file.endswith("chuy.json"):
+                config_object = json.load(configuration)
+            elif file.endswith("chuy.toml"):
+                config_object = toml.load(configuration)["chuy"]
+            elif file.endswith("pyproject.toml"):
+                config_object = toml.load(configuration)["tool"]["chuy"]
         except Exception as decodig_execption:
-            raise BaseException(f"Error while loading {file}.") from decodig_execption
+            raise BaseException(
+                f"Error while loading {file}: {decodig_execption}"
+            ) from decodig_execption
+
+    return config_object
 
 
 def list_commands(config: dict) -> None:
@@ -48,12 +50,13 @@ def list_commands(config: dict) -> None:
     colorized_print(" Project Commands:", CYAN)
 
     for item in config:
-        colorized_print(
+        command_str = dedent(
             f"""
-  - {item}
-      {YELLOW}$ {MAGENTA}{config[item]}
-        """
+                - {item}
+                {YELLOW}$ {MAGENTA}{config[item]}
+            """
         )
+        colorized_print(command_str)
 
 
 def get_commands(config: dict) -> list:

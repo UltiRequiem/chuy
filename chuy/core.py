@@ -17,7 +17,7 @@ def entry_point() -> None:
             exec_commands(config[command])
         except KeyError as command_not_defined_in_config:
             raise BaseException(
-                "That command is not defined in your configuration!"
+                "The command `{command}` is not defined in your configuration!"
             ) from command_not_defined_in_config
 
 
@@ -29,8 +29,8 @@ def main():
         entry_point()
     except KeyboardInterrupt:
         error_no_traceback("\nProcess killed by the user!")
-    except BaseException as e:
-        error_no_traceback(str(e))
+    except Exception as err:  # pylint: disable=broad-except
+        error_no_traceback(str(err))
 
 
 if __name__ == "__main__":
