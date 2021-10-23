@@ -6,9 +6,9 @@ import os
 import json
 import sys
 import pathlib
+from textwrap import dedent
 
 import toml
-
 from colores import colorized_print, colorized_input, CYAN, MAGENTA, YELLOW
 
 
@@ -50,12 +50,13 @@ def list_commands(config: dict) -> None:
     colorized_print(" Project Commands:", CYAN)
 
     for item in config:
-        colorized_print(
+        command_str = dedent(
             f"""
-  - {item}
-      {YELLOW}$ {MAGENTA}{config[item]}
-        """
+                - {item}
+                {YELLOW}$ {MAGENTA}{config[item]}
+            """
         )
+        colorized_print(command_str)
 
 
 def get_commands(config: dict) -> list:

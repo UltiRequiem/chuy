@@ -35,5 +35,5 @@ def test_list_commands(mocked_colorized_print):
 
     call_args = [i.args for i in mocked_colorized_print.call_args_list]
     assert call_args[0][0] == " Project Commands:"
-    assert call_args[1][0].startswith("\n  - this\n")
+    assert call_args[1][0].startswith("\n- this\n")
     assert "that\n" in call_args[1][0]
