@@ -28,17 +28,16 @@ def get_config(file: str) -> dict:
 
     with open(file=file, mode="r", encoding="utf-8") as configuration:
         try:
-            return {
-                "chuy.json": json.load(configuration) if file == "chuy.json" else {},
-                "chuy.toml": toml.load(configuration)["chuy"]
-                if file == "chuy.toml"
-                else {},
-                "pyproject.toml": toml.load(configuration)["tool"]["chuy"]
-                if file == "pyproject.toml"
-                else {},
-            }[file]
+            if file.endswith("chuy.json"):
+                return json.load(configuration)
+            elif file.endswith("chuy.toml"):
+                return toml.load(configuration)["chuy"]
+            elif file.endswith("pyproject.toml"):
+                return toml.load(configuration)["tool"]["chuy"]
         except Exception as decodig_execption:
-            raise BaseException(f"Error while loading {file}: {decodig_execption}") from decodig_execption
+            raise BaseException(
+                f"Error while loading {file}: {decodig_execption}"
+            ) from decodig_execption
 
 
 def list_commands(config: dict) -> None:
