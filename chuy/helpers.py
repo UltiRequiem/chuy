@@ -38,7 +38,7 @@ def get_config(file: str) -> dict:
                 else {},
             }[file]
         except Exception as decodig_execption:
-            raise BaseException(f"Error while loading {file}.") from decodig_execption
+            raise BaseException(f"Error while loading {file}: {decodig_execption}") from decodig_execption
 
 
 def list_commands(config: dict) -> None:
