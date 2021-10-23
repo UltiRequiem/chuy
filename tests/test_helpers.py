@@ -1,9 +1,11 @@
-import tempfile
-from unittest.mock import patch
 import json
-import toml
-import pytest
+import tempfile
 from pathlib import Path
+from unittest.mock import patch
+
+import pytest
+import toml
+
 from chuy.helpers import get_config, list_commands
 
 SAMPLE_CONFIG = {"this": "that"}
@@ -19,10 +21,10 @@ SAMPLE_CONFIG = {"this": "that"}
 )
 def test_get_config_opens_file(filename, content):
     with tempfile.TemporaryDirectory() as tdir:
-        fp = Path(tdir) / filename
-        with open(fp, "w") as f:
-            f.write(content)
-        actual = get_config(str(fp))
+        filepath = Path(tdir) / filename
+        with open(filepath, "w", encoding="utf8") as filehandler:
+            filehandler.write(content)
+        actual = get_config(str(filepath))
 
     assert actual == SAMPLE_CONFIG
 

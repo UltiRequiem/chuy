@@ -29,8 +29,8 @@ def main():
         entry_point()
     except KeyboardInterrupt:
         error_no_traceback("\nProcess killed by the user!")
-    except BaseException as e:
-        error_no_traceback(str(e))
+    except Exception as err:  # pylint: disable=broad-except
+        error_no_traceback(str(err))
 
 
 if __name__ == "__main__":

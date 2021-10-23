@@ -25,19 +25,22 @@ def get_config(file: str) -> dict:
     """
     Read the config and parse it to a Python dictionary.
     """
+    config_object = {}
 
     with open(file=file, mode="r", encoding="utf-8") as configuration:
         try:
             if file.endswith("chuy.json"):
-                return json.load(configuration)
+                config_object = json.load(configuration)
             elif file.endswith("chuy.toml"):
-                return toml.load(configuration)["chuy"]
+                config_object = toml.load(configuration)["chuy"]
             elif file.endswith("pyproject.toml"):
-                return toml.load(configuration)["tool"]["chuy"]
+                config_object = toml.load(configuration)["tool"]["chuy"]
         except Exception as decodig_execption:
             raise BaseException(
                 f"Error while loading {file}: {decodig_execption}"
             ) from decodig_execption
+
+    return config_object
 
 
 def list_commands(config: dict) -> None:
