@@ -4,3 +4,6 @@
 **/.mypy_cache/
 **/env/
 **/venv/
+
+# IDEs
+.vscode
