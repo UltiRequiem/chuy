@@ -1,3 +1,7 @@
+"""
+Metadata Package Tests.
+"""
+
 from chuy import __package_name__, __url__, __version__, __author_email__
 
 
@@ -6,7 +10,7 @@ def test_version():
 
 
 def test_url():
-    assert isinstance(__url__, str), "The url value is invalid!"
+    assert isinstance(__url__, str), "The URL value is invalid!"
 
 
 def test_name():

@@ -1,3 +1,7 @@
+"""
+Chuy Entry Point
+"""
+
 from colores import error_no_traceback, setup_colorama
 
 from .helpers import exec_commands, get_commands, get_config, get_config_file

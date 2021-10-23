@@ -1,3 +1,7 @@
+"""
+Chuy Helpers Tests.
+"""
+
 import json
 import tempfile
 from pathlib import Path

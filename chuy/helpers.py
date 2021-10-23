@@ -1,5 +1,5 @@
 """
-Here I define the methods that help me in the core.
+Core Helpers.
 """
 
 import os
