@@ -1,18 +1,18 @@
-name: Pylint
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  luacheck:          
-    name: Pylint
+  CI:
+    name: CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Prepare
+      - name: Install Dependencies
         run: |
-          sudo apt-get update      
           pip install poetry chuy
           poetry install
       - name: Run pylint
         run: chuy lint
+      - name: Run Pytest
+        run: chuy tests
