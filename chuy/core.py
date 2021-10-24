@@ -21,7 +21,7 @@ def entry_point() -> None:
             exec_commands(config[command])
         except KeyError as command_not_defined_in_config:
             raise BaseException(
-                "The command `{command}` is not defined in your configuration!"
+                f"The command `{command}` is not defined in your configuration!"
             ) from command_not_defined_in_config
 
 
