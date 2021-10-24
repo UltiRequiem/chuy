@@ -15,14 +15,15 @@ def entry_point() -> None:
     setup_colorama()
 
     config = get_config(get_config_file(["chuy.json", "pyproject.toml", "chuy.toml"]))
+    commands = get_commands(config)
+    invalid_commands = set(commands).difference(set(config))
+    if invalid_commands:
+        raise UndefinedChuyCommand(
+                f"These commands are not defined in your configuration: {invalid_commands}"
+            )
 
-    for command in get_commands(config):
-        try:
-            exec_commands(config[command])
-        except KeyError as command_not_defined_in_config:
-            raise UndefinedChuyCommand(
-                f"The command `{command}` is not defined in your configuration!"
-            ) from command_not_defined_in_config
+    for command in commands:
+        exec_commands(config[command])
 
 
 def main():

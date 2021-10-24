@@ -33,6 +33,15 @@ def test_entry_point_raises_invalid_command_error(mock_get_commands, mock_get_co
     with pytest.raises(UndefinedChuyCommand):
         entry_point()
 
+@patch("chuy.core.get_config")
+@patch("chuy.core.get_commands")
+@patch("chuy.core.exec_commands")
+def test_entry_point_raises_invalid_command_error_before_running_any_command(mock_exec_commands, mock_get_commands, mock_get_config):
+    mock_get_config.return_value = {"a": "_", "b": "_"}
+    mock_get_commands.return_value = ["a", "c"]
+    with pytest.raises(UndefinedChuyCommand):
+        entry_point()
+    assert not mock_exec_commands.called
 
 @patch("chuy.core.entry_point")
 def test_main_runs(mock_entry_point):
