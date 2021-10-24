@@ -3,7 +3,7 @@ Chuy Entry Point
 """
 
 from colores import error_no_traceback, setup_colorama
-
+from .exceptions import UndefinedChuyCommand
 from .helpers import exec_commands, get_commands, get_config, get_config_file
 
 
@@ -20,7 +20,7 @@ def entry_point() -> None:
         try:
             exec_commands(config[command])
         except KeyError as command_not_defined_in_config:
-            raise BaseException(
+            raise UndefinedChuyCommand(
                 f"The command `{command}` is not defined in your configuration!"
             ) from command_not_defined_in_config
 

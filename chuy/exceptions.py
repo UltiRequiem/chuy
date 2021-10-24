@@ -4,3 +4,7 @@ class InvalidChuyConfiguration(Exception):
 
 class EmptyChuyConfiguration(Exception):
     pass
+
+
+class UndefinedChuyCommand(Exception):
+    pass
