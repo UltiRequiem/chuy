@@ -19,8 +19,8 @@ def entry_point() -> None:
     invalid_commands = set(commands).difference(set(config))
     if invalid_commands:
         raise UndefinedChuyCommand(
-                f"These commands are not defined in your configuration: {invalid_commands}"
-            )
+            f"These commands are not defined in your configuration: {invalid_commands}"
+        )
 
     for command in commands:
         exec_commands(config[command])
