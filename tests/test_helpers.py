@@ -11,7 +11,13 @@ import pytest
 import toml
 
 from chuy.exceptions import InvalidChuyConfiguration, EmptyChuyConfiguration
-from chuy.helpers import get_config_file, get_config, list_commands, get_commands
+from chuy.helpers import (
+    get_config_file,
+    get_config,
+    list_commands,
+    get_commands,
+    exec_commands,
+)
 
 SAMPLE_CONFIG = {"this": "that"}
 
@@ -105,3 +111,11 @@ def test_get_commands(
     mock_colorized_input.return_value = SAMPLE_USER_INPUT
     actual = get_commands(sample_chuy_config)
     assert actual == expected
+
+
+@patch("chuy.helpers.colorized_print")
+@patch("os.system")
+def test_exec_commands(mock_os_system, mock_colorized_print):
+    exec_commands("mycmd")
+    assert mock_colorized_print.call_args[0][0] == " $ mycmd \n"
+    assert mock_os_system.call_args[0] == ("mycmd",)
