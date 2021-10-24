@@ -5,6 +5,10 @@
 **/env/
 **/venv/
 
+# coverage
+.coverage
+htmlcov
+
 # IDEs
 .vscode/
 .vim/
