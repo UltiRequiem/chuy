@@ -11,6 +11,8 @@ from textwrap import dedent
 import toml
 from colores import colorized_print, colorized_input, CYAN, MAGENTA, YELLOW
 
+from chuy.exceptions import InvalidChuyConfiguration, EmptyChuyConfiguration
+
 
 def get_config_file(posible_config_files: list) -> str:
 
@@ -18,7 +20,7 @@ def get_config_file(posible_config_files: list) -> str:
         if pathlib.Path(file).is_file():
             return file
 
-    raise BaseException("Configuration file not found :(")
+    raise FileNotFoundError("Configuration file not found :(")
 
 
 def get_config(file: str) -> dict:
@@ -36,7 +38,7 @@ def get_config(file: str) -> dict:
             elif file.endswith("pyproject.toml"):
                 config_object = toml.load(configuration)["tool"]["chuy"]
         except Exception as decodig_execption:
-            raise BaseException(
+            raise InvalidChuyConfiguration(
                 f"Error while loading {file}: {decodig_execption}"
             ) from decodig_execption
 
@@ -63,20 +65,22 @@ def get_commands(config: dict) -> list:
     """
     Get a list with all the commands to execute.
     """
+    if not config:
+        raise EmptyChuyConfiguration("There are no commands in the chuy configuration!")
 
-    commands = []
-
-    for item in range(len(config)):
-        try:
-            commands.append(sys.argv[item])
-        except IndexError:
-            break
-
-    if len(commands) == 1:
+    print(sys.argv)
+    if len(sys.argv) == 1:
         list_commands(config)
         return colorized_input("Which command do you want to run? ").split(" ")
 
-    return commands[1::]
+    commands = []
+    for idx, _ in enumerate(config, start=1):
+        try:
+            commands.append(sys.argv[idx])
+        except IndexError:
+            break
+
+    return commands
 
 
 def exec_commands(command: str) -> None:
