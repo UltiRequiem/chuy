@@ -12,3 +12,4 @@ htmlcov
 # IDEs
 .vscode/
 .vim/
+.idea
