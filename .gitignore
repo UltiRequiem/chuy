@@ -7,7 +7,7 @@
 
 # coverage
 .coverage
-htmlcov
+htmlcov/
 
 # IDEs
 .vscode/

@@ -1,7 +1,0 @@
-{
-  "format": "poetry run black .",
-  "lint": "poetry run pylint chuy tests",
-  "tests": "poetry run pytest",
-  "coverage": "poetry run coverage run -m pytest tests && coverage html",
-  "package": "poetry build && poetry publish"
-}
