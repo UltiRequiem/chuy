@@ -20,6 +20,7 @@ colores = "^0.1.0"
 pytest = "^5.2"
 black = "^21.7b0"
 pylint = "^2.9.6"
+coverage = "^6.1.1"
 
 [tool.poetry.scripts]
 chuy = 'chuy:main'
@@ -28,6 +29,7 @@ chuy = 'chuy:main'
 format = "poetry run black ."
 lint = "poetry run pylint chuy tests"
 tests = "poetry run pytest"
+coverage = "poetry run coverage run -m pytest tests && coverage html"
 package = "poetry build && poetry publish"
 
 [build-system]

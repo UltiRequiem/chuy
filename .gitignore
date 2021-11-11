@@ -7,8 +7,9 @@
 
 # coverage
 .coverage
-htmlcov
+htmlcov/
 
 # IDEs
 .vscode/
 .vim/
+.idea
