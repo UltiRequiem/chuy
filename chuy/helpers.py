@@ -2,8 +2,8 @@
 Core Helpers.
 """
 
-import os
 import json
+import subprocess
 import sys
 import pathlib
 from textwrap import dedent
@@ -88,4 +88,4 @@ def exec_commands(command: str) -> None:
     Print command with colors and then execute it.
     """
     colorized_print(f" $ {command} \n", MAGENTA)
-    os.system(command)
+    subprocess.run(command, shell=True, check=True)

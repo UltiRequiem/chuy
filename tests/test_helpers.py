@@ -114,8 +114,8 @@ def test_get_commands(
 
 
 @patch("chuy.helpers.colorized_print")
-@patch("os.system")
-def test_exec_commands(mock_os_system, mock_colorized_print):
+@patch("subprocess.run")
+def test_exec_commands(mock_subprocess_run, mock_colorized_print):
     exec_commands("mycmd")
     assert mock_colorized_print.call_args[0][0] == " $ mycmd \n"
-    assert mock_os_system.call_args[0] == ("mycmd",)
+    assert mock_subprocess_run.call_args[0] == ("mycmd",)
