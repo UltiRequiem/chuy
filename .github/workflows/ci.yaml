@@ -1,18 +1,24 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
-  CI:
+  ci:
     name: CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: |
-          pip install poetry chuy
-          poetry install
-      - name: Run pylint
-        run: chuy lint
-      - name: Run Pytest
-        run: chuy tests
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pipx install poetry
+      - run: poetry install
+      - run: poetry build
+      - run: poetry run pytest
+      - run: poetry run pylint chuy tests
