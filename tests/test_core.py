@@ -1,5 +1,5 @@
-from subprocess import CompletedProcess, CalledProcessError
-from unittest.mock import patch, Mock
+from subprocess import CalledProcessError
+from unittest.mock import patch
 
 import pytest
 

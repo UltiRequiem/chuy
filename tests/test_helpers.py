@@ -23,7 +23,7 @@ SAMPLE_CONFIG = {"this": "that"}
 
 
 def test_get_config_file_returns_file():
-    with tempfile.TemporaryFile() as tfile:
+    with tempfile.NamedTemporaryFile() as tfile:
         actual = get_config_file(["inexistent.json", tfile.name, "inexistent.json"])
         assert actual == tfile.name
 
