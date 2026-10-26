@@ -20,7 +20,7 @@ colores = "^0.1.0"
 pytest = "*"
 black = "*"
 pylint = "*"
-coverage = "^6.1.1"
+coverage = ">=6.1.1,<8.0.0"
 
 [tool.poetry.scripts]
 chuy = 'chuy:main'
