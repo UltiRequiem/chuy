@@ -1,20 +1,11 @@
 # Chuy
 
-![CodeQL](https://github.com/UltiRequiem/chuy/workflows/CodeQL/badge.svg)
-![CI](https://github.com/UltiRequiem/chuy/workflows/CI/badge.svg)
-[![Code Style](https://img.shields.io/badge/Code%20Style-Black-000000.svg)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/chuy)](https://pypi.org/project/chuy)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/chuy?color=blue&label=Total%20Lines)
 
-Set alias to long commands and speed up your workflow, inspired in tools like
+Create aliases for long commands and speed up your workflow, inspired by tools like
 [yarn](https://github.com/yarnpkg/berry) and [npm](https://github.com/npm/cli).
 
-Although Chuy is written in Python, it can be used for projects of any language,
-and even folders that are not projects!
-
-**Note:** this tool is actively used by its primary author. He's happy to review
-pull requests / respond to issues you may discover.
+Although Chuy is written in Python, it can be used with projects written in any language.
 
 ## Install
 
@@ -25,14 +16,11 @@ package:
 pip install chuy
 ```
 
-To get the last version:
+To get the lastest version:
 
 ```bash
 pip install git+https://github.com/UltiRequiem/chuy
 ```
-
-If you use Linux, you may need to install this with sudo to be able to access
-the command throughout your system.
 
 ## Example Configuration file
 
@@ -67,12 +55,12 @@ tests = "poetry run pytest"
 package = "poetry build && poetry publish"
 ```
 
-Usually the configuration file goes in the root of your project but it can
-really go anywhere.
+The configuration file usually goes in the root of your project,
+but it can be placed anywhere.
 
 ## Usage
 
-After having defined the commands in the
+Once you've defined your commands in the
 [configuration file](#example-configuration-file), you can now execute them as
 follows:
 
@@ -81,9 +69,6 @@ chuy format
  $ poetry run black .
  ....
 ```
-
-This varies depending on the commands you have written in the
-[chuy file](#example-configuration-file).
 
 ```bash
 chuy lint
@@ -107,9 +92,8 @@ chuy lint format tests
 
 ## Tricks
 
-If you do not pass any command, you will get a menu with all the available
-commands, then you will be asked which of them you want to execute, here you can
-pass more than one command if you want.
+If you don't specify a command, Chuy will display a menu listing
+all available commands. You can then select one or more commands to execute.
 
 ## Screenshots
 
@@ -117,7 +101,7 @@ Normal usage:
 
 ![Screenshot Normal Usage](https://i.imgur.com/sOu86gu.png)
 
-And if you don't pass any command:
+When you don't specify a command:
 
 ![Screenshot Menu](https://i.imgur.com/nFd4Bz9.png)
 
