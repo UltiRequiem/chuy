@@ -68,7 +68,6 @@ def get_commands(config: dict) -> list:
     if not config:
         raise EmptyChuyConfiguration("There are no commands in the chuy configuration!")
 
-    print(sys.argv)
     if len(sys.argv) == 1:
         list_commands(config)
         return colorized_input("Which command do you want to run? ").split(" ")
