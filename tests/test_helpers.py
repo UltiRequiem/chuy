@@ -75,6 +75,15 @@ def test_get_commands_raises_empty_config_error():
         _ = get_commands({})
 
 
+def test_get_commands_does_not_pollute_stdout(capsys):
+    """get_commands must not dump argv (leftover debug print) to stdout."""
+    with patch("chuy.helpers.sys") as mock_sys:
+        mock_sys.argv = [SAMPLE_FILEPATH, "cmd1"]
+        actual = get_commands({"a": "a", "b": "b"})
+    assert actual == ["cmd1"]
+    assert capsys.readouterr().out == ""
+
+
 SAMPLE_FILEPATH = "path/to/chuy/__main__.py"
 SAMPLE_USER_INPUT = "my_cmd my_cmd2"
 
